@@ -1,18 +1,18 @@
 function BottomPanel(props) {
     return (
       <div>
-        <a className = 'Completed'
-        onClick={() => props.finishedTasks()}>Completed</a>
-        <a className = 'Active'
-        onClick={() => props.noFinishedTasks()}>Active</a>
-        <a className='all'
-        onClick={() => props.allTasks()}>All</a>
-        <a 
-        onClick={() => props.ClearAllTasks()}>Clear all </a>
-        <a 
-        onClick={() => props.clearFinishedTasks()}>Clear completed</a>
-        {/* <a 
-        onClick={() => props.allFinishedTasks()}>Make all tasks completed</a> */}
+        <button className = 'Completed'
+        onClick={() => props.finishedTasks()}>Completed</button>
+        <button className = 'Active'
+        onClick={() => props.noFinishedTasks()}>Active</button>
+        <button className='all'
+        onClick={() => props.allTasks()}>All</button>
+        <button className = 'clearTask'
+        onClick={() => props.ClearAllTasks()}>Clear all </button>
+        <button className = 'Clear'
+        onClick={() => props.clearFinishedTasks()}>Clear completed</button>
+        {/* <button 
+        onClick={() => props.allFinishedTasks()}>Make all tasks completed</button> */}
       </div>
     );
   }

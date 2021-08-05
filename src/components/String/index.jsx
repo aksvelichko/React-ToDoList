@@ -9,7 +9,7 @@ function String(props) {
         value={props.itemTask} 
         />
         <button 
-        className="button" 
+        className="buttonAdd" 
         onClick={props.addArrElement}
         >add
         </button>

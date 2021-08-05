@@ -5,7 +5,6 @@ import String from "./components/String";
 import BottomPanel from "./components/Bottom";
 import { v4 as uuidv4 } from 'uuid';
 import { randomColor } from 'randomcolor';
-// import ReactDOM from 'react-dom';
 import Draggable from 'react-draggable';
 
 
@@ -67,7 +66,7 @@ function App() {
   };
 
 const filter = () => {
-  const page = localStorage.getItem('page');
+  const page = localStorage.getItem('items');
 
   if (page === 'all') return
   if (page === 'Active') changeComplete('.true')
@@ -115,6 +114,25 @@ const filter = () => {
     setItems(newArray)
   }
 
+  const changeValue = (item) => {
+    const allTask = items.map((e) => {
+      if (item.id === e.id) {
+        return { ...e, value: item.value };
+      } else {
+        return e;
+      }
+    });
+    setItems(allTask);
+    setFilteredItems(allTask);
+  };
+
+  // const keyPress = (newItem, e) => {
+  //   const code = e.keyCode || e.which
+  //   if (code === 13) {
+  //     newItem()
+  //   }
+  // }
+
   return (
     <div className="content">
       <h1>
@@ -136,7 +154,12 @@ const filter = () => {
           handleChange={handleChange}
           addArrElement={addArrElement}
           itemTask={itemTask}
+          // onKeyPress={keyPress}
+          // onKeyPress={(newItem, e) => keyPress(newItem, e)}
         />
+         {/* <button className="enter"
+          onClick={keyPress}
+        ></button> */}
       </div>
 
       <div className="task-divs">
@@ -151,8 +174,11 @@ const filter = () => {
             <div className="todo__item" style={{ backgroundColor: item.color }}>
               <TasksDiv
                 item={item}
+                key={item.id}
                 deleteItem={deleteItem}
+                filter={filter}
                 changeComplete={changeComplete}
+                changeValue={changeValue}
                 finishedTasks={finishedTasks}
               />
             </div>
