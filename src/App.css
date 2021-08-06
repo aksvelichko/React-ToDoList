@@ -10,109 +10,6 @@
   background: rgb(0, 0, 0, 0.8);
 }
 
-.task-div {
-  width: 400px;
-  height: 60px;
-  display: flex;
-  cursor: move;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1px;
-}
-.text-div {
-  margin-left: 15px;
-}
-
-.complete-div {
-  margin-left: 5px;
-  border-radius: 50%;
-  border: 1px solid rgb(192, 192, 192);
-  height: 20px;
-  width: 20px;
-}
-.delete-div {
-  margin-right: 5px;
-  border: 0;
-  font-size: 15px;
-}
-.complete-div:hover {
-  cursor: pointer;
-}
-.delete-div:hover {
-  cursor: pointer;
-}
-
-.bottom-panel{
-  background-color: azure;
-  padding: 10px;
-  width: 512px;
-  height: 25px;
-  border:1px solid whitesmoke;
-  background: none;
-  color: white;
-  padding: 0 10px;
-  outline: none;
-}
-.Completed {
-  margin-right: 10px;
-  border: none;
-  background: none;
-  font-size: 16px;
-  color: rgb(37, 202, 202);
-}
-.Completed:hover {
-  cursor: pointer;
-  color: rgb(255, 255, 255);
-  text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px rgb(136, 8, 221), 0 0 35px rgb(173, 11, 236), 0 0 40px rgb(248, 7, 55), 0 0 50px rgb(220, 207, 20), 0 0 75px crimson;
-}
-.Active {
-  margin-right: 10px;
-  border: none;
-  background: none;
-  font-size: 16px;
-  color: rgb(37, 202, 202);
-}
-.Active:hover {
-  cursor: pointer;
-  color: rgb(255, 255, 255);
-  text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px rgb(136, 8, 221), 0 0 35px rgb(173, 11, 236), 0 0 40px rgb(248, 7, 55), 0 0 50px rgb(220, 207, 20), 0 0 75px crimson;
-}
-.All {
-  margin-right: 10px;
-  border: none;
-  background: none;
-  font-size: 16px;
-  color: rgb(37, 202, 202);
-}
-.All:hover {
-  cursor: pointer;
-  color: rgb(255, 255, 255);
-  text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px rgb(136, 8, 221), 0 0 35px rgb(173, 11, 236), 0 0 40px rgb(248, 7, 55), 0 0 50px rgb(220, 207, 20), 0 0 75px crimson;
-}
-.ClearTask {
-  margin-right: 10px;
-  border: none;
-  background: none;
-  font-size: 16px;
-  color: rgb(37, 202, 202);
-}
-.ClearTask:hover {
-  cursor: pointer;
-  color: rgb(255, 255, 255);
-  text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px rgb(136, 8, 221), 0 0 35px rgb(173, 11, 236), 0 0 40px rgb(248, 7, 55), 0 0 50px rgb(220, 207, 20), 0 0 75px crimson;
-}
-.Clear {
-  margin-right: 10px;
-  border: none;
-  background: none;
-  font-size: 16px;
-  color: rgb(37, 202, 202);
-}
-.Clear:hover {
-  cursor: pointer;
-  color: rgb(255, 255, 255);
-  text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px rgb(136, 8, 221), 0 0 35px rgb(173, 11, 236), 0 0 40px rgb(248, 7, 55), 0 0 50px rgb(220, 207, 20), 0 0 75px crimson;
-}
 h1 {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -148,38 +45,8 @@ body {
   background: url(./city.jpg) no-repeat;
   background-blend-mode: hard-light;
   background-size: 100%;
-  /* background-color: violet; */
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-.input {
-  padding: 10px;
-  width: 400px;
-  height: 40px;
-  font-size: 20px;
-  border:none;
-  border-bottom: 1px solid whitesmoke;
-  background: none;
-  color: white;
-  padding: 0 10px;
-  outline: none;
-}
-.buttonAdd {
-  width:100px;
-  color: rgb(37, 202, 202);
-  height: 35px;
-  font-size: 15px;
-  background: none;
-  border: 1px solid whitesmoke;
-  margin-left: 10px;
-}
-.buttonAdd:hover {
-  color: rgb(255, 255, 255);
-  cursor: pointer;
-  text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px rgb(136, 8, 221), 0 0 35px rgb(173, 11, 236), 0 0 40px rgb(248, 7, 55), 0 0 50px rgb(220, 207, 20), 0 0 75px crimson;
-}
-.text-complete {
-  text-decoration: line-through;
 }

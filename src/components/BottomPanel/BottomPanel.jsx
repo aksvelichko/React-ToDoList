@@ -1,18 +1,21 @@
+import './BottomPanel.css'
+
 function BottomPanel({ ClearAllTasks, clearFinishedTasks, setTaskIsComplete }) {
+  
   return (
     <div>
       <button
         className='Completed'
-        onClick={() => setTaskIsComplete("Completed")}>
+        onClick={() => setTaskIsComplete('Completed')}>
         Completed
       </button>
       <button
         className='Active'
-        onClick={() => setTaskIsComplete("Active")}>
+        onClick={() => setTaskIsComplete('Active')}>
         Active
       </button>
       <button
-        onClick={() => setTaskIsComplete("All")}
+        onClick={() => setTaskIsComplete('All')}
         className='All'>
         All
       </button>
@@ -29,7 +32,7 @@ function BottomPanel({ ClearAllTasks, clearFinishedTasks, setTaskIsComplete }) {
       {/* <button 
         onClick={() => props.allFinishedTasks()}>Make all tasks completed</button> */}
     </div>
-  );
+  )
 }
 
-export default BottomPanel;
+export default BottomPanel
