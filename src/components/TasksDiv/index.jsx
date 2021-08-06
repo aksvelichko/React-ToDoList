@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-function TasksDiv(props) {
+function TasksDiv({ item, deleteItem, changeComplete, changeValue }) {
   let spanClassName = ''
-  let completeClassName 
-  if (props.item.isComplete) {
+  let completeClassName
+  if (item.isComplete) {
     spanClassName = "text-complete";
     completeClassName = "complete";
   } else {
@@ -12,34 +12,31 @@ function TasksDiv(props) {
   }
 
   const [editMode, setEditMode] = useState(false);
-  const [valueInput, setValueInput] = useState(props.item.value);
+  const [valueInput, setValueInput] = useState(item.value);
 
   const makeInput = () => {
     if (editMode) {
-      props.item.value = valueInput;
-      props.changeValue(props.item);
+      item.value = valueInput;
+      changeValue(item);
       setEditMode(false);
     } else {
       setEditMode(true);
     }
   };
   const setInputValueFunc = (event) => {
-    //добавление значение из инпута в объект
     setValueInput(event.target.value);
-    // console.log(event.target.value);
   };
 
   return (
-    <div className="task-div" style={{ backgroundColor: props.item.color }}>
+    <div className="task-div" style={{ backgroundColor: item.color }}>
       <div>
         <button
           className={"complete-div " + completeClassName}
-          onClick={(event) => props.changeComplete(props.item.id, event)}
+          onClick={(event) => changeComplete(item.id, event)}
         >
-          {props.item.isComplete === true && "✓"}
-          
+          {item.isComplete === true && "✓"}
+
         </button>
-        {/* <span className={"text-div " + spanClassName} >{props.item.value}</span> */}
       </div>
       {editMode === true && (
         <input onChange={setInputValueFunc} onDoubleClick={makeInput}></input>
@@ -51,12 +48,13 @@ function TasksDiv(props) {
       )}
       <button
         className="delete-div"
-        style={{ backgroundColor: props.item.color }}
-        onClick={() => props.deleteItem(props.item.id)}
+        style={{ backgroundColor: item.color }}
+        onClick={() => deleteItem(item.id)}
       >
         X
       </button>
     </div>
   );
 }
+
 export default TasksDiv;

@@ -1,31 +1,44 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import TasksDiv from "./components/Tasks";
-import String from "./components/String";
-import BottomPanel from "./components/Bottom";
+import TasksDiv from "./components/TasksDiv";
+import Input from "./components/Input";
+import BottomPanel from "./components/BottomPanel";
 import { v4 as uuidv4 } from 'uuid';
 import { randomColor } from 'randomcolor';
 import Draggable from 'react-draggable';
 
-
 function App() {
   const [itemTask, setItemTask] = useState('');
-  //добавление значение из инпута в объект
   const [items, setItems] = useState(
-
     JSON.parse(localStorage.getItem('items')) || []
-    //добавление объекта в массив
   )
 
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(items))
   }, [items])
 
+  const [taskIsComplete, setTaskIsComplete] = useState("All");
+
   const [filteredItems, setFilteredItems] = useState([...items]);
 
+  useEffect(() => {
+    if (taskIsComplete === 'Completed') {
+      const filteredTasks = items.filter((event) => event.isComplete === true);
+      setFilteredItems(filteredTasks);
+      return
+    } else if (taskIsComplete === 'Active') {
+      const filteredTasks = items.filter((event) => event.isComplete === false);
+      setFilteredItems(filteredTasks);
+      return
+    }
+    setFilteredItems(items);
+  }, [items, taskIsComplete]);
 
   const addArrElement = () => {
-    if (itemTask.trim() !== "") {
+    if (itemTask.trim() === "") {
+      alert("Error")
+      setItemTask('')
+    } else {
       const newItem = {
         id: uuidv4(),
         value: itemTask,
@@ -34,11 +47,7 @@ function App() {
           luminosity: 'light'
         }),
       }
-      setFilteredItems([...filteredItems, newItem]);
       setItems((items) => [...items, newItem])
-      setItemTask('')
-    } else {
-      alert("Error")
       setItemTask('')
     }
   }
@@ -48,44 +57,19 @@ function App() {
   };
 
   const deleteItem = (id) => {
-    const allTask = items.filter((e) => id !== e.id);
+    const allTask = items.filter((event) => id !== event.id);
     setItems(allTask);
-    setFilteredItems(allTask);
   };
 
   const changeComplete = (id, event) => {
-    const allTask = items.map((e) => {
-      if (id === e.id) {
-        return { ...e, isComplete: !e.isComplete };
+    const allTask = items.map((event) => {
+      if (id === event.id) {
+        return { ...event, isComplete: !event.isComplete };
       } else {
-        return e;
+        return event;
       }
     });
     setItems(allTask);
-    setFilteredItems(allTask);
-  };
-
-const filter = () => {
-  const page = localStorage.getItem('items');
-
-  if (page === 'all') return
-  if (page === 'Active') changeComplete('.true')
-  changeComplete('.false')
-}
-
-  const finishedTasks = () => {
-    const filteredTasks = items.filter((e) => e.isComplete === true);
-    setFilteredItems(filteredTasks);
-  };
-
-  const noFinishedTasks = () => {
-    const filteredTasks = items.filter((e) => e.isComplete === false);
-    setFilteredItems(filteredTasks);
-  };
-
-  const allTasks = () => {
-    const filteredTasks = items;
-    setFilteredItems(filteredTasks);
   };
 
   const ClearAllTasks = () => {
@@ -94,16 +78,14 @@ const filter = () => {
   };
 
   const clearFinishedTasks = () => {
-    const filteredTasks = items.filter((e) => e.isComplete === false);
-    setFilteredItems(filteredTasks);
+    const filteredTasks = items.filter((event) => event.isComplete === false);
     setItems(filteredTasks);
   };
 
   // const allFinishedTasks = () => {
-  //   const allTask = items.map((e) => {
-  //     return { ...e, isComplete: true };
+  //   const allTask = items.map((event) => {
+  //     return { ...event, isComplete: true };
   //   });
-  //   setFilteredItems(allTask);
   //   setItems(allTask);
   // };
 
@@ -115,23 +97,15 @@ const filter = () => {
   }
 
   const changeValue = (item) => {
-    const allTask = items.map((e) => {
-      if (item.id === e.id) {
-        return { ...e, value: item.value };
+    const allTask = items.map((event) => {
+      if (item.id === event.id) {
+        return { ...event, value: item.value };
       } else {
-        return e;
+        return event;
       }
     });
     setItems(allTask);
-    setFilteredItems(allTask);
   };
-
-  // const keyPress = (newItem, e) => {
-  //   const code = e.keyCode || e.which
-  //   if (code === 13) {
-  //     newItem()
-  //   }
-  // }
 
   return (
     <div className="content">
@@ -140,26 +114,19 @@ const filter = () => {
       </h1>
       <div className="bottom-panel">
         <BottomPanel
-          finishedTasks={finishedTasks}
-          noFinishedTasks={noFinishedTasks}
           ClearAllTasks={ClearAllTasks}
-          allTasks={allTasks}
+          setTaskIsComplete={setTaskIsComplete}
           clearFinishedTasks={clearFinishedTasks}
-          // allFinishedTasks={allFinishedTasks}
+        // allFinishedTasks={allFinishedTasks}
         />
       </div>
       <div className="header">
-        <String
+        <Input
           value={itemTask}
           handleChange={handleChange}
           addArrElement={addArrElement}
           itemTask={itemTask}
-          // onKeyPress={keyPress}
-          // onKeyPress={(newItem, e) => keyPress(newItem, e)}
         />
-         {/* <button className="enter"
-          onClick={keyPress}
-        ></button> */}
       </div>
 
       <div className="task-divs">
@@ -176,10 +143,8 @@ const filter = () => {
                 item={item}
                 key={item.id}
                 deleteItem={deleteItem}
-                filter={filter}
                 changeComplete={changeComplete}
                 changeValue={changeValue}
-                finishedTasks={finishedTasks}
               />
             </div>
           </Draggable>

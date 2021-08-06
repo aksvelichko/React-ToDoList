@@ -77,26 +77,26 @@
   color: rgb(255, 255, 255);
   text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px rgb(136, 8, 221), 0 0 35px rgb(173, 11, 236), 0 0 40px rgb(248, 7, 55), 0 0 50px rgb(220, 207, 20), 0 0 75px crimson;
 }
-.all {
+.All {
   margin-right: 10px;
   border: none;
   background: none;
   font-size: 16px;
   color: rgb(37, 202, 202);
 }
-.all:hover {
+.All:hover {
   cursor: pointer;
   color: rgb(255, 255, 255);
   text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px rgb(136, 8, 221), 0 0 35px rgb(173, 11, 236), 0 0 40px rgb(248, 7, 55), 0 0 50px rgb(220, 207, 20), 0 0 75px crimson;
 }
-.clearTask {
+.ClearTask {
   margin-right: 10px;
   border: none;
   background: none;
   font-size: 16px;
   color: rgb(37, 202, 202);
 }
-.clearTask:hover {
+.ClearTask:hover {
   cursor: pointer;
   color: rgb(255, 255, 255);
   text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px rgb(136, 8, 221), 0 0 35px rgb(173, 11, 236), 0 0 40px rgb(248, 7, 55), 0 0 50px rgb(220, 207, 20), 0 0 75px crimson;
@@ -145,7 +145,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url(./1m.jpg) no-repeat;
+  background: url(./city.jpg) no-repeat;
   background-blend-mode: hard-light;
   background-size: 100%;
   /* background-color: violet; */
